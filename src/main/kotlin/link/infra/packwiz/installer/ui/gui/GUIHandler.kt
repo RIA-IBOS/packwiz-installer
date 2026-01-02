@@ -1,5 +1,6 @@
 package link.infra.packwiz.installer.ui.gui
 
+import link.infra.packwiz.installer.AppInfo
 import link.infra.packwiz.installer.ui.IUserInterface
 import link.infra.packwiz.installer.ui.IUserInterface.ExceptionListResult
 import link.infra.packwiz.installer.ui.data.ExceptionDetails
@@ -42,7 +43,7 @@ class GUIHandler : IUserInterface {
 	@Volatile
 	override var firstInstall = false
 
-	override var title = "packwiz-installer"
+	override var title = AppInfo.DISPLAY_NAME
 		set(value) {
 			field = value
 			EventQueue.invokeLater { frmPackwizlauncher.title = value }

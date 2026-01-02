@@ -19,7 +19,7 @@ public class RequiresBootstrap {
 			return "";
 		}).anyMatch(str -> str.equals("g") || str.equals("no-gui"))) {
 			System.out.println(
-					"This program must be run through packwiz-installer-bootstrap. Use --bootstrap-no-update to disable updating.");
+					"This program must be run through " + AppInfo.BOOTSTRAP_DISPLAY_NAME + ". Use --bootstrap-no-update to disable updating.");
 			System.exit(1);
 		} else {
 			try {
@@ -28,8 +28,8 @@ public class RequiresBootstrap {
 				// Ignore the exceptions, just continue using the ugly L&F
 			}
 			JOptionPane.showMessageDialog(null,
-					"This program must be run through packwiz-installer-bootstrap. Use --bootstrap-no-update to disable updating.",
-					"packwiz-installer", JOptionPane.ERROR_MESSAGE);
+					"This program must be run through " + AppInfo.BOOTSTRAP_DISPLAY_NAME + ". Use --bootstrap-no-update to disable updating.",
+					AppInfo.DISPLAY_NAME, JOptionPane.ERROR_MESSAGE);
 			System.exit(1);
 		}
 	}

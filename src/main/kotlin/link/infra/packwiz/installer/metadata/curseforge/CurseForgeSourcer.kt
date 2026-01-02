@@ -1,5 +1,6 @@
 package link.infra.packwiz.installer.metadata.curseforge
 
+import link.infra.packwiz.installer.AppInfo
 import com.google.gson.Gson
 import com.google.gson.JsonIOException
 import com.google.gson.JsonSyntaxException
@@ -79,7 +80,7 @@ private fun executeWithFallback(
 			val req = Request.Builder()
 				.url(url)
 				.header("Accept", "application/json")
-				.header("User-Agent", "packwiz-installer")
+				.header("User-Agent", AppInfo.DISPLAY_NAME)
 				.header("X-API-Key", APIKey)
 				.post(requestBody)
 				.build()

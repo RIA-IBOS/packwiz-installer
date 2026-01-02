@@ -1,5 +1,6 @@
 package link.infra.packwiz.installer.target.path
 
+import link.infra.packwiz.installer.AppInfo
 import link.infra.packwiz.installer.request.RequestException
 import link.infra.packwiz.installer.target.ClientHolder
 import okhttp3.HttpUrl
@@ -15,7 +16,7 @@ class HttpUrlPath(private val url: HttpUrl, path: String? = null): PackwizPath<H
 		val req = Request.Builder()
 			.url(build())
 			.header("Accept", "application/octet-stream")
-			.header("User-Agent", "packwiz-installer")
+			.header("User-Agent", AppInfo.DISPLAY_NAME)
 			.get()
 			.build()
 		try {

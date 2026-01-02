@@ -46,7 +46,7 @@ class Main(args: Array<String>) {
 						// Ignore the exceptions, just continue using the ugly L&F
 					}
 					JOptionPane.showMessageDialog(null, "Failed to parse command line arguments: $e",
-						"packwiz-installer", JOptionPane.ERROR_MESSAGE)
+						AppInfo.DISPLAY_NAME, JOptionPane.ERROR_MESSAGE)
 				}
 			}
 			exitProcess(1)
@@ -134,15 +134,15 @@ class Main(args: Array<String>) {
 		private fun addBootstrapOptions(options: Options) {
 			options.addOption(null, "bootstrap-update-url", true, "Github API URL for checking for updates")
 			options.addOption(null, "bootstrap-update-token", true, "Github API Access Token, for private repositories")
-			options.addOption(null, "bootstrap-no-update", false, "Don't update packwiz-installer")
-			options.addOption(null, "bootstrap-main-jar", true, "Location of the packwiz-installer JAR file")
+			options.addOption(null, "bootstrap-no-update", false, "Don't update " + AppInfo.DISPLAY_NAME)
+			options.addOption(null, "bootstrap-main-jar", true, "Location of the " + AppInfo.DISPLAY_NAME + " JAR file")
 			options.addOption("g", "no-gui", false, "Don't display a GUI to show update progress")
 			options.addOption("h", "help", false, "Display this message") // Implemented in packwiz-installer-bootstrap!
 		}
 
 		@JvmStatic
 		fun main(args: Array<String>) {
-			Log.info("packwiz-installer was started without packwiz-installer-bootstrap. Use the bootstrapper for automatic updates! (Disregard this message if you have your own update mechanism)")
+			Log.info(AppInfo.DISPLAY_NAME + " was started without " + AppInfo.BOOTSTRAP_DISPLAY_NAME + ". Use the bootstrapper for automatic updates! (Disregard this message if you have your own update mechanism)")
 			Main(args)
 		}
 	}
@@ -158,7 +158,7 @@ class Main(args: Array<String>) {
 				EventQueue.invokeLater {
 					JOptionPane.showMessageDialog(null,
 						"A fatal error occurred: \n$e",
-						"packwiz-installer", JOptionPane.ERROR_MESSAGE)
+						AppInfo.DISPLAY_NAME, JOptionPane.ERROR_MESSAGE)
 					exitProcess(1)
 				}
 				// In case the EventQueue is broken, exit after 1 minute
