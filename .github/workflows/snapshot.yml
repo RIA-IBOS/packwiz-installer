@@ -22,7 +22,7 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build copyJar
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: packwiz-installer-snapshot
           path: build/dist/packwiz-installer.jar
