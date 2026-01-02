@@ -37,6 +37,7 @@ class UpdateManager internal constructor(private val opts: Options, val ui: IUse
 	private var cancelled = false
 	private var cancelledStartGame = false
 	private var errorsOccurred = false
+	private val outdatedOptionalTimeoutSeconds = 3L
 
 	init {
 		start()
@@ -328,7 +329,8 @@ class UpdateManager internal constructor(private val opts: Options, val ui: IUse
 			if (!ui.optionsButtonPressed) {
 				// TODO: this is so ugly
 				ui.submitProgress(InstallProgress("Reconfigure optional mods?", 0,1))
-				ui.awaitOptionalButton(true, opts.timeout)
+				val timeout = if (opts.timeout < 0) opts.timeout else outdatedOptionalTimeoutSeconds
+				ui.awaitOptionalButton(true, timeout)
 				if (ui.cancelButtonPressed) {
 					showCancellationDialog()
 					return
