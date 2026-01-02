@@ -135,7 +135,7 @@ tasks.build {
 }
 
 githubRelease {
-	owner("comp500")
+	owner("RIA-IBOS")
 	repo("packwiz-installer")
 	tagName("${project.version}")
 	releaseName("Release ${project.version}")
